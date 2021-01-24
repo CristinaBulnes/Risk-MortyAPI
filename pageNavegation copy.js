@@ -21,10 +21,10 @@ function openEpisodesMenu () {
         $(".navbar__title, .navbar").css("transition", "1s");
         ////$(".navbar__elementsCont").slideToggle("slow");
     } else if (deviceType>=700) {
-        $(".navbar").css("width","20%");
-        $(".navbar__title").css("width","20%");
-        $(".navbar__elementsCont").css("width","80%");
-        $(".navbar__elementsCont").css("display","block");
+        $(".navbar__elementsCont").fadeIn(1000);
+        $(".navbar").css("width","50%");
+        $(".navbar__title").css("width","10%");
+        $(".navbar__title, .navbar").css("transition", "1s");
     }
 }
 
@@ -36,10 +36,9 @@ function closeEpisodesMenu () {
         $(".navbar").css("width","15%");
         $(".navbar__title").css("width","100%");
     } else if (deviceType>=700) {
-        $(".navbar").css("width","20%");
-        $(".navbar__title").css("width","20%");
-        $(".navbar__elementsCont").css("width","80%");
-        $(".navbar__elementsCont").css("display","block");
+        $(".navbar__elementsCont").fadeOut(1000);
+        $(".navbar").css("width","5%");
+        $(".navbar__title").css("width","100%");
     }
 }
 

@@ -40,10 +40,8 @@ body {
 .mainContainer {
     width: 100%;
     display: flex;
-    justify-content: flex-start;
     min-height: max-content;
     background-color: rgb(28, 31, 36);
-    position: relative;
 }
 
 .mainContainer__section {
@@ -191,4 +189,32 @@ body {
 }
 .icon_EpisodeAirDate {
     margin-right: 5px;
+}
+
+@media (min-width:700px) {
+    .navbar__title {
+        font-size: 2em;
+    }
+    .navbar {
+        width: 5%;
+    }
+    .navbar__elementsCont {
+        width: 100%;
+    }
+    .mainContainer__section {
+        width: 95%;
+    }
+    .navbar__item {
+        font-size: 1.7em;
+    }
+    .characterContainer {
+        width: 47%;
+        margin-top: 1%;
+    }
+}
+
+@media (min-width:1200px) {
+    .characterContainer {
+        width: 30%;
+    }
 }

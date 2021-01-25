@@ -80,7 +80,7 @@ function getNextItems() {
             firstItem++;
             console.log(response.data.results[firstItem].name);
             let episodeContainer = $(`<li class="navbar__item">` + response.data.results[firstItem].name + `</li>`);
-            $(".navbar__elementsCont").append(episodeContainer);
+            $(".load").before(episodeContainer);
         }
 })
 }

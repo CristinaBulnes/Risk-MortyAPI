@@ -96,6 +96,24 @@ body {
     color: var(--light-main-color);
     background-color: #f08d49;
 }
+
+.load {
+    font-size: 1em;
+    font-weight: 700;
+    width: 50%;
+    color:var(--dark-main-color);
+    background-color: #f08d49;
+    padding: 2%;
+    margin: 7px auto;
+    border: 1px solid #f08d49;
+    border-radius: 10px;
+    text-align: center;
+}
+.load:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 0px 0px 10px var(--light-main-color);
+}
 .sectionContainer {
     width: 100%;
     display: flex;

@@ -7,7 +7,7 @@ function navEvaluation() {
     if (navStatus == "close") {
         openEpisodesMenu();
     } else if (navStatus == "open") {
-        closeEpisodesMenu();
+        /* closeEpisodesMenu(); */
     }
 }
 function openEpisodesMenu () {

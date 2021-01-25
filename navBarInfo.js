@@ -19,7 +19,6 @@ $("document").ready(function () {
     let urlCharacter = "https://rickandmortyapi.com/api/character";
     let urlLocation = "https://rickandmortyapi.com/api/location";
     calculateNumberOfItemsToShow(urlEpisode);
-    havedMyDatas.done(getNextItems);
     //$.when(calculateNumberOfItemsToShow(urlEpisode)).done(getNextItems())
 
     /* let havedMyDatas = new Promise(function(myResolve, myReject) {
@@ -35,11 +34,12 @@ $("document").ready(function () {
     //calculateNumberOfItemsToShow(urlLocation);
     /* getNextItems(iterationTime); */
     //getNextItems();
-    $(".load").on("click", function() {
+    $(".load").on("click", function(event) {
+        event.stopPropagation();
         infoToDisplayItems.iterationTime ++;
         infoToDisplayItems.iterationOnPage ++;
+        getNextItems();
     })
-    $(".load").on("click", getNextItems)
 });
 
 function calculateNumberOfItemsToShow(URLsection) {
@@ -56,6 +56,12 @@ function calculateNumberOfItemsToShow(URLsection) {
         havedMyDatas.resolve();
         /* return infoToDisplayItems; */
         });
+}
+
+function resetList () {
+    infoToDisplayItems.iterationTime = 1;
+    infoToDisplayItems.iterationOnPage = 1;
+    myPage = 1;
 }
 
 function pageToGetItems() {

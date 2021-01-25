@@ -11,6 +11,7 @@ function navEvaluation() {
     }
 }
 function openEpisodesMenu () {
+    havedMyDatas.done(getNextItems);
     deviceType = window.innerWidth;
     navStatus = "open";
     if (deviceType<=700) {
@@ -29,8 +30,9 @@ function openEpisodesMenu () {
 }
 
 function closeEpisodesMenu () {
-    navStatus = "close";
     $(".navbar__item").remove();
+    resetList();
+    navStatus = "close";
     if (deviceType<=700) {
         $(".navbar__elementsCont").fadeOut(1000);
         $(".mainContainer__section").fadeIn(1000);

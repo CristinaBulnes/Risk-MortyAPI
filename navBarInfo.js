@@ -99,6 +99,12 @@ function getNextItems() {
             firstItem++;
             console.log(response.data.results[firstItem].name);
             let episodeContainer = $(`<li class="navbar__item">` + response.data.results[firstItem].name + `</li>`);
+            episodeContainer.data("epId", response.data.results[firstItem].id);
+            episodeContainer.on("click", function(event) {
+                //event.stopPropagation();
+                showEpisodeInfor($(this).data("epId"));
+                
+            })
             $(".load").before(episodeContainer);
         }
 })

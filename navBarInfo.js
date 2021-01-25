@@ -13,13 +13,24 @@ let myPage = 1;
 let allMyInfoToDisplayItems = [];
 
 let urlEpisode = "https://rickandmortyapi.com/api/episode";
+var havedMyDatas = $.Deferred();
 $("document").ready(function () {
     // Main section to get information about:
-    
     let urlCharacter = "https://rickandmortyapi.com/api/character";
     let urlLocation = "https://rickandmortyapi.com/api/location";
-
     calculateNumberOfItemsToShow(urlEpisode);
+    havedMyDatas.done(getNextItems);
+    //$.when(calculateNumberOfItemsToShow(urlEpisode)).done(getNextItems())
+
+    /* let havedMyDatas = new Promise(function(myResolve, myReject) {
+        let myDatas = ;
+        console.log(myDatas)
+        myResolve(myDatas);
+        myReject("Error");
+});
+    havedMyDatas.then(
+        function(myDatas) {console.log(myDatas); ;}
+    ); */
     //calculateNumberOfItemsToShow(urlCharacter);
     //calculateNumberOfItemsToShow(urlLocation);
     /* getNextItems(iterationTime); */
@@ -41,8 +52,10 @@ function calculateNumberOfItemsToShow(URLsection) {
         infoToDisplayItems.totalItemsOnPage = data.data.results.length;
         infoToDisplayItems.numberOfIterationPerPage = infoToDisplayItems.totalItemsOnPage/infoToDisplayItems.numberItemsShowing;
         infoToDisplayItems.iterationTime = 1;
+        infoToDisplayItems.iterationOnPage = 1;
+        havedMyDatas.resolve();
+        /* return infoToDisplayItems; */
         });
-    console.log(infoToDisplayItems);
 }
 
 function pageToGetItems() {

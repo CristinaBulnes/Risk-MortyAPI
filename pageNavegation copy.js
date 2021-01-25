@@ -7,7 +7,7 @@ function navEvaluation() {
     if (navStatus == "close") {
         openEpisodesMenu();
     } else if (navStatus == "open") {
-        /* closeEpisodesMenu(); */
+        closeEpisodesMenu();
     }
 }
 function openEpisodesMenu () {
@@ -30,6 +30,7 @@ function openEpisodesMenu () {
 
 function closeEpisodesMenu () {
     navStatus = "close";
+    $(".navbar__item").remove();
     if (deviceType<=700) {
         $(".navbar__elementsCont").fadeOut(1000);
         $(".mainContainer__section").fadeIn(1000);

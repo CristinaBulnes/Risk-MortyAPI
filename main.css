@@ -138,7 +138,7 @@ body {
 }
 
 .episodeData__charactersCont {
-    display: none;
+    display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 2%;
@@ -147,7 +147,7 @@ body {
 .characterContainer {
     background-color: rgb(106, 106, 106);
     width: 100%;
-    height: max-content;
+    min-height: max-content;
     border-radius: 10px;
     display: flex;
     margin-top: 5%;
@@ -164,6 +164,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
 }
 .characterData__name {
     font-size: 1.2em;
@@ -178,10 +179,12 @@ body {
 }
 .containerData {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: .8em;
     font-weight: 500;
     color: var(--dark-main-color);
+    width: 100%;
+    padding: 0;
 }
 
 .episodeData__header, .section__header {

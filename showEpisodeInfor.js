@@ -6,7 +6,6 @@ async function showEpisodeInfor(epId) {
       };
     axios(config)
     .then(function (response) {
-        console.log(response);
         $(".sectionEpisodes").show(1000);
         $(".sectionCharacters").hide(1000);
         $(".characterContainer").remove();
@@ -18,7 +17,6 @@ async function showEpisodeInfor(epId) {
             myCharacters.push(axios.get(element));
         });
         axios.all(myCharacters).then(function(value) {
-            console.log(value)
             value.forEach(element => {
                 showCharacterInfo(element);
             });
@@ -41,6 +39,5 @@ function showCharacterInfo(characterInfo) {
     </article>`);
     $(characterContainer).data("characterId", characterInfo.data.id);
     $(characterContainer).on("click", displayCharacterInfor);
-    console.log($(characterContainer).data("characterId"));
     $(".episodeData__charactersCont").append(characterContainer);
 }

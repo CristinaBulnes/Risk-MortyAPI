@@ -1,4 +1,3 @@
-//$(".episodeData__character").on("click", displayCharacterInfor($(this).data("characterId")));
 function displayCharacterInfor () {
     axios.get(`https://rickandmortyapi.com/api/character/`+$(this).data("characterId"))
     .then(function(value) {
@@ -21,11 +20,12 @@ function displayCharacterInfor () {
         `+  value.data.location.name +`
         </section>`);
         $(charLocation).data("locationURL", value.data.location.url);
-        console.log($(charLocation));
+        $(charLocation).on("click", function (event) {
+            event.stopPropagation();
+            displayLocationData($(this).data("locationURL"));
+        })
         $(".sectionContainer").append(myCharacterCont);
         $(".sectionCharacters").append(charLocation);
-        //$(myCharacterCont).toggle();
     }
     )
-    console.log($(this).data("characterId"));
 }

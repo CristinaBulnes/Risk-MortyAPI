@@ -325,3 +325,11 @@ body {
 .characterData__origenCont:hover {
     background-color: orange;
 }
+
+.sectionEpisodes {
+    display: none;
+}
+
+.sectionWelcome {
+    display: flex;
+}

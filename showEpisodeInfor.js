@@ -6,6 +6,7 @@ async function showEpisodeInfor(epId) {
       };
     axios(config)
     .then(function (response) {
+        $(".sectionWelcome").hide(1000);
         $(".sectionEpisodes").show(1000);
         $(".sectionCharacters").hide(1000);
         $(".characterContainer").remove();

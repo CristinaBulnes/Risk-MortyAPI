@@ -6,23 +6,23 @@ async function showEpisodeInfor(epId) {
       };
     axios(config)
     .then(function (response) {
-        console.log(response)
+        console.log(response);
+        $(".sectionEpisodes").show(1000);
+        $(".sectionCharacters").hide(1000);
         $(".characterContainer").remove();
         $(".title_EpisodeName").text(response.data.name);
         $(".subtitle_EpisodeNameCode").text(response.data.episode);
         $(".info_EpisodeAirDate").text(response.data.air_date).prepend(`<i class='fas fa-satellite-dish icon_EpisodeAirDate'></i>`);
-        for (let index = 0; index < response.data.characters.length; index++) {
-            // Using promise
-            /* let getCharacterData = new Promise(function(myResolve, myReject) {
-                myResolve(showCharacterInfo(response.data.characters[index]));
-              });
-              getCharacterData.then(function(value) {
-                console.log(value); //undefined
-              }); */
-            //
-            getCharacterInfo(response.data.characters[index])
-
-        }
+        const myCharacters = [];
+        response.data.characters.forEach(element => {
+            myCharacters.push(axios.get(element));
+        });
+        axios.all(myCharacters).then(function(value) {
+            console.log(value)
+            value.forEach(element => {
+                showCharacterInfo(element);
+            });
+        })
     })
 }
 
@@ -39,19 +39,8 @@ function showCharacterInfo(characterInfo) {
             </div>
         </div>
     </article>`);
-    $(".episodeData__charactersCont").append(characterContainer)
-}
-
-
-async function getCharacterInfo (characterURL) {
-    var config = {
-        method: 'get',
-        url: characterURL,
-        headers: { }
-      };
-    await axios(config)
-    .then(function (response) {
-        console.log(response.data)
-        showCharacterInfo (response);
-    });
+    $(characterContainer).data("characterId", characterInfo.data.id);
+    $(characterContainer).on("click", displayCharacterInfor);
+    console.log($(characterContainer).data("characterId"));
+    $(".episodeData__charactersCont").append(characterContainer);
 }

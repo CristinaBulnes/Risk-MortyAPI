@@ -1,7 +1,6 @@
 function displayCharacterInfor () {
     axios.get(`https://rickandmortyapi.com/api/character/`+$(this).data("characterId"))
     .then(function(value) {
-        console.log(value.data.name)
         $(".sectionEpisodes").hide(1000);
         let myCharacterCont = $(`<section class="sectionContainer__section sectionCharacters">
         <div class="characterData characterData__imgCont"><img src="`+ value.data.image + `" class="characterData characterData__img" alt=""></div>

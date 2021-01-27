@@ -1,4 +1,3 @@
-//var x = window.matchMedia("(max-width: 700px)")
 $("document").ready(function () {
     var deviceType;
     var navStatus = "close";

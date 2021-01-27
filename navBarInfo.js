@@ -14,26 +14,10 @@ let allMyInfoToDisplayItems = [];
 
 let urlEpisode = "https://rickandmortyapi.com/api/episode";
 var havedMyDatas = $.Deferred();
-$("document").ready(function () {
-    // Main section to get information about:
-    let urlCharacter = "https://rickandmortyapi.com/api/character";
-    let urlLocation = "https://rickandmortyapi.com/api/location";
-    calculateNumberOfItemsToShow(urlEpisode);
-    //$.when(calculateNumberOfItemsToShow(urlEpisode)).done(getNextItems())
 
-    /* let havedMyDatas = new Promise(function(myResolve, myReject) {
-        let myDatas = ;
-        console.log(myDatas)
-        myResolve(myDatas);
-        myReject("Error");
-});
-    havedMyDatas.then(
-        function(myDatas) {console.log(myDatas); ;}
-    ); */
-    //calculateNumberOfItemsToShow(urlCharacter);
-    //calculateNumberOfItemsToShow(urlLocation);
-    /* getNextItems(iterationTime); */
-    //getNextItems();
+$("document").ready(function () {
+    calculateNumberOfItemsToShow(urlEpisode);
+
     $(".load").on("click", function(event) {
         event.stopPropagation();
         infoToDisplayItems.iterationTime ++;
@@ -54,7 +38,6 @@ function calculateNumberOfItemsToShow(URLsection) {
         infoToDisplayItems.iterationTime = 1;
         infoToDisplayItems.iterationOnPage = 1;
         havedMyDatas.resolve();
-        /* return infoToDisplayItems; */
         });
 }
 

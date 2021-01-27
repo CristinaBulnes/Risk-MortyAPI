@@ -1,5 +1,4 @@
 function displayLocationData (locationURL) {
-    console.log(locationURL)
     axios.get(locationURL)
     .then(function(value) {
         $(".sectionEpisodes").show(1000);

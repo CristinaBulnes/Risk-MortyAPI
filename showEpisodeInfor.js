@@ -3,16 +3,23 @@ async function showEpisodeInfor(epId) {
         method: 'get',
         url: 'https://rickandmortyapi.com/api/episode/' + epId,
         headers: { }
-      };
+    };
+    $(".characterContainer").remove();
+    $(".episodeData__header").remove();
     axios(config)
     .then(function (response) {
-        $(".sectionWelcome").hide(1000);
-        $(".sectionEpisodes").show(1000);
-        $(".sectionCharacters").hide(1000);
-        $(".characterContainer").remove();
-        $(".title_EpisodeName").text(response.data.name);
-        $(".subtitle_EpisodeNameCode").text(response.data.episode);
-        $(".info_EpisodeAirDate").text(response.data.air_date).prepend(`<i class='fas fa-satellite-dish icon_EpisodeAirDate'></i>`);
+        let myEpisodeCont = $(`<header class="section__header episodeData episodeData__header">
+        <h3 class="title title_EpisodeName">`+response.data.name+`</h3>
+        <h4 class="subtitle subtitle_EpisodeNameCode">`+response.data.episode +`</h4>
+        <p class="info info_EpisodeAirDate"><i class='fas fa-satellite-dish icon_EpisodeAirDate'></i>AirDate`+response.data.air_date+`</p>
+    </header>`);
+        $(".sectionEpisodes").append(myEpisodeCont);
+        $(".sectionWelcome").fadeOut(1000, function () {
+            $(".sectionEpisodes").fadeIn(1000);
+        });
+        $(".sectionCharacters").fadeOut(1000, function () {
+            $(".sectionEpisodes").fadeIn(1000);
+        });
         const myCharacters = [];
         response.data.characters.forEach(element => {
             myCharacters.push(axios.get(element));
@@ -26,7 +33,6 @@ async function showEpisodeInfor(epId) {
 }
 
 function showCharacterInfo(characterInfo) {
-    console.log(characterInfo.data)
     let characterContainer = $(`<article class="episodeData episodeData__character characterContainer">
         <div class="characterData characterData__imgCont"><img src="`+ characterInfo.data.image+`" class="characterData characterData__img" alt=""></div>
         <div class="characterData characterData__infoCont">
@@ -41,4 +47,5 @@ function showCharacterInfo(characterInfo) {
     $(characterContainer).data("characterId", characterInfo.data.id);
     $(characterContainer).on("click", displayCharacterInfor);
     $(".episodeData__charactersCont").append(characterContainer);
+    $(".sectionEpisodes").append($(".episodeData__charactersCont"));
 }

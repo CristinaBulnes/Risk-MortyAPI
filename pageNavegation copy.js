@@ -40,7 +40,7 @@ function closeEpisodesMenu () {
         $(".navbar__title").css("width","100%");
     } else if (deviceType>=700) {
         $(".navbar__elementsCont").fadeOut(1000);
-        $(".navbar").css("width","5%");
+        $(".navbar").css("width","15%");
         $(".navbar__title").css("width","100%");
     }
 }
